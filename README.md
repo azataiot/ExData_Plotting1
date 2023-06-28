@@ -16,8 +16,9 @@ Roughly that is:  Memory Size = 9 columns * 2,075,259 rows * 8 bytes = 149,000,0
 2. You may find it useful to convert the Date and Time variables to Date/Time classes in R using the  strptime() and as.Date()
 
 ```R
-data$Date <- as.Date(data$Date, "%d/%m/%Y")
-data$Time <- strptime(data$Time, "%H:%M:%S")
+data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
+data$Time <- strptime(data$Time, format = "%H:%M:%S")
+data$Time <- format(data$Time, format = "%H:%M:%S")
 ```
 
 
@@ -27,7 +28,27 @@ data$Time <- strptime(data$Time, "%H:%M:%S")
 data <- subset(data, Date == as.Date("2007-02-01") | Date == as.Date("2007-02-02"))
 
 ```
+# 4. exports the clean data set to the file clean.csv
 
+```R
+write.csv(data, "clean.csv", row.names = FALSE)
+```
+
+## Results
+
+The results are shown in the following figures: (check the code in the plot*.R files)
+
+### Plot 1
+![plot1.png](plot1.png)
+
+### Plot 2
+![plot2.png](plot2.png)
+
+### Plot 3
+![plot3.png](plot3.png)
+
+### Plot 4
+![plot4.png](plot4.png)
 
 ## Implementation 
 
