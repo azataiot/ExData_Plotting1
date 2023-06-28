@@ -1,5 +1,49 @@
 ## Introduction
 
+tasks: 
+
+1. The dataset has 2,075,259 rows and 9 columns. **First calculate a rough estimate of how much memory the dataset will require** in memory before reading into R. 
+
+To calculate a rough estimate of the amount of memory a data set will require in R, we can use the formula:
+
+```
+Memory Size = Number of Columns * Number of Rows * Size of Data Type
+```
+
+Roughly that is:  Memory Size = 9 columns * 2,075,259 rows * 8 bytes = 149,000,000 bytes = 149 MB 
+
+
+2. You may find it useful to convert the Date and Time variables to Date/Time classes in R using the  strptime() and as.Date()
+
+```R
+data$Date <- as.Date(data$Date, "%d/%m/%Y")
+data$Time <- strptime(data$Time, "%H:%M:%S")
+```
+
+
+3. We will only be using data from the dates 2007-02-01 and 2007-02-02.
+
+```R
+data <- subset(data, Date == as.Date("2007-02-01") | Date == as.Date("2007-02-02"))
+
+```
+
+
+## Implementation 
+
+The code is implemented in the following files:
+
+* clean.R - reads and cleans the raw data set, and exports the clean data set to the file clean.csv
+* plot1.R - creates the first plot 
+* plot2.R - creates the second plot
+* plot3.R - creates the third plot
+* plot4.R - creates the fourth plot
+
+Notice: each of the plot*.R files reads the clean data set from the file clean.csv.
+
+
+
+## Data Intro
 This assignment uses data from
 the <a href="http://archive.ics.uci.edu/ml/">UC Irvine Machine
 Learning Repository</a>, a popular repository for machine learning
