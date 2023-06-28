@@ -1,4 +1,3 @@
-
 # load the data into the memory
 data <- read.csv("clean.csv")
 # construct the png file device
